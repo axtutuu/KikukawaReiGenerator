@@ -2,23 +2,14 @@ class Gene
   attr_accessor :score
   attr_accessor :text
 
-  #初期化
+  #  初期化
   def initialize(textlen, mutationrate = 5)
     @score = 0.0
     @mutationrate = mutationrate
 
-    #ランダムな文字列を作る
-    o = (('a'..'z').to_a + ('A'..'Z').to_a)
-
-    @text = (0...textlen).map { o[rand(o.length)] }.join
-  end
-
-  def getcharlist
-    charlist = [('a'..'z'), ('A'..'Z'), (' ')].map { |i|
-      i.to_a
-    }.flatten
-
-    return charlist
+    #  辞書
+    arr = (('a'..'z').to_a + ('A'..'Z').to_a)
+    @text = (0...textlen).map { arr[rand(arr.length)] }.join
   end
 
   #交叉の結果できた遺伝子を返す

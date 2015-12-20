@@ -23,22 +23,13 @@ class KikukawaReiGenerator
 
 
     while Score::top_score(@genes) > 0
-      dump
+      log
       next_generation
       Score::get_score(KIKUKAWA_REI, @genes)
       Score::sort(@genes)
     end
 
-    dump
-  end
-
-  #その世代の全遺伝子を出力
-  def dump
-    puts "generation : " + @generation.to_s
-    @genes.each do |gene|
-      puts gene.text + "  score : " + gene.score.to_s
-    end
-    puts "----------"
+    log
   end
 
   #子を返す
@@ -52,22 +43,19 @@ class KikukawaReiGenerator
   def next_generation
     @generation += 1
     (3...@genes.size).each do |i|
-      # トップ2の遺伝子を交配する
+      # 子を作る
       @genes[i] = breed(@genes[0], @genes[1])
     end
   end
 
-  #実行
-  def exec
-    while Score::top_score(@genes) > 0
-      dump
-      next_generation
-      Score::get_score(KIKUKAWA_REI, @genes)
-      Score::sort(@genes)
+  def log
+    puts "generation : " + @generation.to_s
+    @genes.each do |gene|
+      puts gene.text + "  score : " + gene.score.to_s
     end
-
-    dump
+    puts "*******************************"
   end
+
 end
 
 # mutationrate → 突然変異率
