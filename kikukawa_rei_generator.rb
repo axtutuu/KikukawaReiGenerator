@@ -36,7 +36,7 @@ class KikukawaReiGenerator
   def dump
     puts "generation : " + @generation.to_s
     @genes.each do |gene|
-      puts gene.text + "  distance : " + gene.score.to_s
+      puts gene.text + "  score : " + gene.score.to_s
     end
     puts "----------"
   end

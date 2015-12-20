@@ -1,4 +1,3 @@
-require 'levenshtein'
 class Gene
   attr_accessor :score
   attr_accessor :text
@@ -22,23 +21,6 @@ class Gene
     return charlist
   end
 
-  # TODO: 評価方法は後で分かりやすく
-  #評価関数 実数で評価を返し、自身のscoreにも格納する
-  def evaluation
-    answerarr = GeneticAlgorithm::ANSWERTEXT.split(//)
-    textarr = @text.split(//)
-
-    total = 0
-    textarr.each_with_index do |chr, i|
-      total += (answerarr[i].ord - textarr[i].ord).abs
-    end
-    # score = Levenshtein.normalized_distance(GeneticAlgorithm::ANSWERTEXT, @text)
-
-    @score = total
-    return total
-  end
-
-  #交叉
   #交叉の結果できた遺伝子を返す
   def crossover(objgene)
     textarr = @text.split(//)
@@ -51,6 +33,19 @@ class Gene
 
     child = clone
     child.text = textarr.join
+    return child
+  end
+
+  #  子を返す
+  def breed(objgene)
+    #  交叉する
+    child = crossover(objgene)
+
+    #  突然変異
+    if rand(100) < @mutationrate then
+      child.mutation!
+    end
+
     return child
   end
 
@@ -87,16 +82,4 @@ class Gene
     @text = textarr.join
   end
 
-  #  子を返す
-  def breed(objgene)
-    #  交叉する
-    child = crossover(objgene)
-
-    #  突然変異
-    if rand(100) < @mutationrate then
-      child.mutation!
-    end
-
-    return child
-  end
 end
