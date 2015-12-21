@@ -8,8 +8,8 @@ class Gene
     @mutationrate = mutationrate
 
     #  辞書
-    arr = (('a'..'z').to_a + ('A'..'Z').to_a)
-    @text = (0...textlen).map { arr[rand(arr.length)] }.join
+    @dic = Hash[[*'a'..'z', *'A'..'Z'].map.with_index{|val,i| [val, i]}]
+    @text = (0...textlen).map { @dic.invert[rand(@dic.size)] }.join
   end
 
   #交叉の結果できた遺伝子を返す
