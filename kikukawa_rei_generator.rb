@@ -9,7 +9,7 @@ class KikukawaReiGenerator
   KIKUKAWA_REI = "KikukawaRei"
   def initialize(gene_count, mutationrate = 5)
     @generation = 1
-    @textlen = KIKUKAWA_REI.split(//).size
+    @textlen = KIKUKAWA_REI.split("").size
     @genes =[]
 
     # 世代数の数だけ遺伝子を作成する

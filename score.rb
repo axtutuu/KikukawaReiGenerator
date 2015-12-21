@@ -1,8 +1,8 @@
 module Score extend self
   def calculation(rei, genes)
     genes.each do |gene|
-      rei_arr = rei.split(//)
-      gene_text_arr = gene.text.split(//)
+      rei_arr = rei.split("")
+      gene_text_arr = gene.text.split("")
 
       # スコアの初期化
       total_score = 0
