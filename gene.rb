@@ -1,6 +1,7 @@
 class Gene
   attr_accessor :score
   attr_accessor :text
+  attr_accessor :dic
 
   #  初期化
   def initialize(textlen, mutationrate = 5)
@@ -45,31 +46,20 @@ class Gene
     #増やすか減らすか 0なら減らし、1なら増やす
     up = rand(2).zero?
 
-    # 文字列のコードポイントを取得し、前後のどちらかにズラす
     textarr = @text.split(//)
     pos = rand(textarr.size)
 
-    #変異前の文字を取得
-    srcchar = textarr[pos].ord
 
-    if (srcchar == "Z".ord && up)
-      srcchar = "a".ord
-    elsif(srcchar == "z".ord)
-      srcchar -= 1
-    elsif(srcchar == "A".ord && !up)
-      srcchar = "z".ord
-    elsif(srcchar == "a".ord && !up)
-      srcchar = "Z".ord
+
+    if (@dic[textarr[pos]] == "Z" && up)
+      num = 0
+    elsif (@dic[textarr[pos]] == "a" && !up)
+      num = 51
     else
-      if(up)
-        srcchar += 1
-      else
-        srcchar -= 1
-      end
+      num = up ? @dic[textarr[pos]] + 1 : @dic[textarr[pos]] - 1
     end
 
-    textarr[pos] = srcchar.chr("UTF-8")
-
+    textarr[pos] = @dic.invert[num]
     @text = textarr.join
   end
 

@@ -8,8 +8,12 @@ module Score extend self
       total_score = 0
 
       # コードポイントで距離の評価
+      # gene_text_arr.each_with_index do |chr, i|
+      #   total_score += (rei_arr[i].ord - gene_text_arr[i].ord).abs
+      # end
+
       gene_text_arr.each_with_index do |chr, i|
-        total_score += (rei_arr[i].ord - gene_text_arr[i].ord).abs
+        total_score += (gene.dic[rei_arr[i]] - gene.dic[gene_text_arr[i]]).abs
       end
 
       gene.score = total_score
