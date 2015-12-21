@@ -52,16 +52,16 @@ class Gene
     #変異前の文字を取得
     srcchar = textarr[pos].ord
 
-    if (srcchar == "Z".ord && up) then
+    if (srcchar == "Z".ord && up)
       srcchar = "a".ord
-    elsif(srcchar == "z".ord) then
+    elsif(srcchar == "z".ord)
       srcchar -= 1
-    elsif(srcchar == "A".ord && !up) then
+    elsif(srcchar == "A".ord && !up)
       srcchar = "z".ord
-    elsif(srcchar == "a".ord && !up) then
+    elsif(srcchar == "a".ord && !up)
       srcchar = "Z".ord
     else
-      if(up) then
+      if(up)
         srcchar += 1
       else
         srcchar -= 1
