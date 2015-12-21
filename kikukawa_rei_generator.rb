@@ -18,7 +18,7 @@ class KikukawaReiGenerator
     end
 
     # 遺伝子の評価を行う
-    Score::get_score(KIKUKAWA_REI, @genes)
+    Score::calculation(KIKUKAWA_REI, @genes)
     Score::sort(@genes)
 
 
@@ -26,7 +26,7 @@ class KikukawaReiGenerator
     while Score::top_score(@genes) > 0
       log
       next_generation
-      Score::get_score(KIKUKAWA_REI, @genes)
+      Score::calculation(KIKUKAWA_REI, @genes)
       Score::sort(@genes)
     end
 
