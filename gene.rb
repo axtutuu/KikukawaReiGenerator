@@ -49,8 +49,6 @@ class Gene
     textarr = @text.split(//)
     pos = rand(textarr.size)
 
-
-
     if (@dic[textarr[pos]] == "Z" && up)
       num = 0
     elsif (@dic[textarr[pos]] == "a" && !up)
