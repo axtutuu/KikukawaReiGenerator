@@ -57,6 +57,13 @@ class KikukawaReiGenerator
 
 end
 
+puts "遺伝子の数:"
+
+gene_count = gets.chomp
+
+puts "突然変異率:"
+mutation_rate = gets.chomp
+
 # mutationrate → 突然変異率
-kikukawa_rei = KikukawaReiGenerator.new(20, 15)
+kikukawa_rei = KikukawaReiGenerator.new(gene_count.to_i, mutation_rate.to_i)
 p "Answer: #{kikukawa_rei.genes.first.text}"

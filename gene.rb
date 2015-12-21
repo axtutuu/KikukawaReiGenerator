@@ -45,7 +45,7 @@ class Gene
   def mutation!
     up = rand(2).zero?
 
-    textarr = @text.split(//)
+    textarr = @text.split("")
     pos = rand(textarr.size)
 
     if (@dic[textarr[pos]] == "Z" && up)
