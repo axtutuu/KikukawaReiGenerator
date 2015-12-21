@@ -43,7 +43,7 @@ class Gene
   #突然変異
   def mutation!
     #増やすか減らすか 0なら減らし、1なら増やす
-    updown = rand(2)
+    up = rand(2).zero?
 
     # 文字列のコードポイントを取得し、前後のどちらかにズラす
     textarr = @text.split(//)
@@ -52,16 +52,16 @@ class Gene
     #変異前の文字を取得
     srcchar = textarr[pos].ord
 
-    if (srcchar == "Z".ord && updown == 1) then
+    if (srcchar == "Z".ord && up) then
       srcchar = "a".ord
     elsif(srcchar == "z".ord) then
       srcchar -= 1
-    elsif(srcchar == "A".ord && updown != 1) then
+    elsif(srcchar == "A".ord && !up) then
       srcchar = "z".ord
-    elsif(srcchar == "a".ord && updown != 1) then
+    elsif(srcchar == "a".ord && !up) then
       srcchar = "Z".ord
     else
-      if(updown == 1) then
+      if(up) then
         srcchar += 1
       else
         srcchar -= 1
