@@ -22,6 +22,7 @@ class KikukawaReiGenerator
     Score::sort(@genes)
 
 
+    # 解答が一致するまで繰り返す
     while Score::top_score(@genes) > 0
       log
       next_generation
@@ -32,14 +33,12 @@ class KikukawaReiGenerator
     log
   end
 
-  #子を返す
   def breed(a, b)
     child = a.breed(b)
 
     return child
   end
 
-  #世代を進める
   def next_generation
     @generation += 1
     (3...@genes.size).each do |i|
@@ -51,7 +50,7 @@ class KikukawaReiGenerator
   def log
     puts "generation : " + @generation.to_s
     @genes.each do |gene|
-      puts gene.text + "  score : " + gene.score.to_s
+      puts "#{gene.text} score : #{gene.score.to_s}"
     end
     puts "*******************************"
   end
@@ -60,4 +59,4 @@ end
 
 # mutationrate → 突然変異率
 kikukawa_rei = KikukawaReiGenerator.new(20, 15)
-p kikukawa_rei.genes.first.text
+p "Answer: #{kikukawa_rei.genes.first.text}"
