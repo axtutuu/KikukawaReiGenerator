@@ -15,8 +15,8 @@ class Gene
 
   #交叉の結果できた遺伝子を返す
   def crossover(objgene)
-    textarr = @text.split(//)
-    objarr = objgene.text.split(//)
+    textarr = @text.split("")
+    objarr = objgene.text.split("")
     crosspos = rand(textarr.size)
 
     (crosspos...textarr.size).each do |i|
@@ -43,7 +43,6 @@ class Gene
 
   #突然変異
   def mutation!
-    #増やすか減らすか 0なら減らし、1なら増やす
     up = rand(2).zero?
 
     textarr = @text.split(//)
