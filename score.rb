@@ -7,7 +7,7 @@ module Score extend self
       # スコアの初期化
       total_score = 0
 
-      # Hashから距離の計算
+      # アルファベット同士の距離を計算し評価
       gene_text_arr.each_with_index do |chr, i|
         total_score += (gene.dic[rei_arr[i]] - gene.dic[gene_text_arr[i]]).abs
       end
